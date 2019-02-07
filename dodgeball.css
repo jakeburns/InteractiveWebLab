@@ -6,3 +6,7 @@
 body{
   background: #505050;
 }
+
+#playerBtn{
+  position: absolute;
+}
