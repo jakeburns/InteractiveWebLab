@@ -1,12 +1,17 @@
 
 window.addEventListener("keydown", checkKeyPressed);
-var player_position = 0
-var step = 20
-var first_movement = true
+var player = {
+  x: 0,
+  y: 0
+}
+var step = 20;
 
 window.alert("Use the W and S keys to move up and down to dodge the  balls.");
-var player = document.getElementById("playerBtn");
+var player = document.getElementById("player");
+var player_height = player.getAttribute("height")
+var screen_height = 600
 
+console.log(player_height)
 // function checkKeyPressed(e) {
 //     if (e.keyCode == "83") {
 //       downPressed();
@@ -16,23 +21,18 @@ var player = document.getElementById("playerBtn");
 //     }
 //}
 
+function start_of_game(){
+  player.style.top = 100
+  player.style.left = 0
+}
 
 function checkKeyPressed(e){
 		var key_code=e.which||e.keyCode;
 		switch(key_code){
 			case 83: //s key
-        if (first_movement){
-          first_movement = false
-          start_game()
-        }
 				downPressed();
 				break;
 			case 87: //w key
-        if (first_movement){
-          first_movement = false
-          start_game()
-        }
-
 				upPressed();
 				break;
 		}
@@ -45,20 +45,11 @@ var moveUp = function(){
 }
 
 var downPressed = function(){
-   player_position += step
-   player.style.top = player_position + 'px';
+  player_position += step;
+  player.style.top = player_position + 'px';
 }
 
 var upPressed = function(){
-   player_position -= step
-   player.style.top = player_position + 'px';
-
-}
-//window.onload = init;
-
-
-
-function start_game(){
-
-  var rand_y = Math.random() *
+  player_position -= step
+  player.style.top = player_position + 'px';
 }
