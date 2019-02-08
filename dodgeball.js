@@ -33,11 +33,11 @@ var moveUp = function(){
 }
 
 var downPressed = function(){
-   player.style.top =+ 200 + 'px';
+   player.style.top =+ 600 + 'px';
 }
 
 var upPressed = function(){
-   player.style.top =- 200 + 'px';
+   player.style.top =- 100 + 'px';
 
 }
-window.onload = init;
+//window.onload = init;
