@@ -1,12 +1,10 @@
 
-window.addEventListener("keydown", checkKeyPressed, false);
+window.addEventListener("keydown", checkKeyPressed);
 
-
+window.alert("Use the W and S keys to move up and down to dodge the  balls.");
 
 function checkKeyPressed(e) {
     if (e.keyCode == "83") {
-      //  alert("The 'a' key is pressed.");
-        //window.alert("Testing");
       downPressed();
     }
     else if (e.keyCode == "87"){
