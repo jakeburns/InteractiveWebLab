@@ -10,3 +10,21 @@ body{
 #player{
   position: relative;
 }
+
+#scoreboard{
+  position: absolute;
+  bottom: 0px;
+  margin-left: 50%;
+}
+
+th{
+  font-size: 24px;
+  font-style: oblique;
+  color: #11ff90;
+}
+
+td{
+  font-size: 18px;
+  color: #ff1149;
+  text-align: center;
+}
