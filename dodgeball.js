@@ -91,7 +91,7 @@ var generateCoin = function(){
 
 }
 
-
+ 
 
 
 while (timer < 300){
