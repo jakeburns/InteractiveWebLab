@@ -6,7 +6,11 @@ var real_player = {
 }
 var step = 20;
 var secs = 1;
-var timer = 0;
+var amount_of_coins = 3;
+var absolute_width = 35;
+var absolute_height = 35;
+var current_interval = 0;
+var max_intervals = 25;
 
 window.alert("Use WASD to move the character around. The game's objective is to gather the most coins in the given time.");
 var player = document.getElementById("player");
@@ -75,27 +79,57 @@ var rightPressed = function(){
 }
 
 var generateCoin = function(){
-  console.log("Generating coin.");
-  var coin = document.createElement("IMG");
+  var clicker = document.createElement("BUTTON");
+  var coin = document.createElement("IMG")
 //  random_x = (Math.random() * 1300) + 1;
 //  random_y = (Math.random() * 450) + 1;
-
+  clicker.setAttribute("type", "button");
   coin.setAttribute("src", "images/Substitute.png");
-  coin.setAttribute("width", "35px");
-  coin.setAttribute("height", "35px");
-  coin.setAttribute("alt", 'Coin');
-  coin.setAttribute('id', 'Coin')
-  document.body.appendChild(coin);
+  coin.setAttribute("width", absolute_width);
+  coin.setAttribute("height", absolute_height);
+  coin.setAttribute("alt", "Coin");
+  coin.setAttribute("class", "Coin")
+  console.log(coin)
+  clicker.setAttribute('onclick', "animateCoin(this.id)")
+  document.body.appendChild(clicker);
+  clicker.appendChild(coin);
 
+  return [clicker, coin];
 //  console.log('(' + random_x + ', ' + random_y + ')');
 
 }
 
- 
+var animateCoin = function(id){
+  var button = document.getElementById(id);
+  var coin = button.getElementsByClassName('Coin')[0];
+  var width = absolute_width;
+  var height = absolute_height;
+  var transparency = 0;
+  var change_attribute = function(){
+    if (current_interval > max_intervals){
+      clearInterval(interval)
+      current_interval = 0
+      document.body.removeChild(button)
+    }
+    coin.setAttribute('width', width);
+    coin.setAttribute('height', height);
+    coin.style.opacity = toString(transparency);
 
+    console.log(transparency)
+    width++;
+    height++;
+    current_interval++;
+    transparency += 1/max_intervals;
+  }
 
-while (timer < 300){
-  setTimeout(func, 1/60)
-  console.log("Game has ended.")
+  var interval = setInterval(change_attribute, 500)
+}
 
+for (var i = 0; i < amount_of_coins; i++){
+  var elements = generateCoin();
+  var button = elements[0];
+  var coin = elements[1];
+  button.setAttribute('id', i)
+  coin.setAttribute('id', i)
+  //button.onclick = function() {animateCoin(i);}
 }
