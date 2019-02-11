@@ -5,7 +5,7 @@
 
 body{
   background: #505050;
-  /* background-image: 'images/Background.png'; */
+  background-image: url('images/Background.png');
 }
 
 #player{
@@ -17,6 +17,7 @@ button{
   position: relative;
   text-align: center;
 }
+
 
 #scoreboard{
   position: absolute;
