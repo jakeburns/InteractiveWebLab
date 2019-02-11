@@ -5,10 +5,17 @@
 
 body{
   background: #505050;
+  /* background-image: 'images/Background.png'; */
 }
 
 #player{
   position: relative;
+  z-index: 2;
+}
+
+button{
+  position: relative;
+  text-align: center;
 }
 
 #scoreboard{
