@@ -175,7 +175,7 @@ var timer = function(){
 
     var h1 = document.createElement('H1');
 
-    h1.innerHTML = 'Time has ran out!!!';
+    h1.innerHTML = 'Time has run out!!!';
     h1.style['text-align'] = 'center';
     h1.style.color = 'green';
 
