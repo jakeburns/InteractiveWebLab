@@ -7,18 +7,18 @@ var real_player = {
 var step = 20;
 var secs = 1;
 var amount_of_coins = 175;
-var absolute_width = 35;
-var absolute_height = 35;
+var absolute_width = 25;
+var absolute_height = 50;
 var current_interval = 0;
 var max_intervals = 25;
 var current_score = 0;
 var current_time = 20;
 var timer_element = document.getElementById('Timer')
 
-window.alert("Use WASD to move the character around. The game's objective is to gather the most coins in " +  current_time + " seconds. The coins are randomized each time you play.");
+window.alert("IMPORTANT INSTRUCTIONS: Use WASD to move the character around. The game's objective is to gather the most coins in " +  current_time + " seconds. The coins are randomized each time you play. Click on the coin to obtain it.");
 var player = document.getElementById("player");
-var player_height = player.getAttribute("height")
-var screen_height = 450
+var player_height = player.getAttribute("height");
+var screen_height = 450;
 
 console.log(player_height)
 // function checkKeyPressed(e) {
@@ -63,6 +63,7 @@ var upPressed = function(){
 }
 
 var leftPressed = function(){
+  player.setAttribute('src', 'images/Avatar-Back.png');
   if (real_player.x >= 0){
     real_player.x -= 10;
     player.style.left = real_player.x + 'px';
@@ -70,6 +71,7 @@ var leftPressed = function(){
 }
 
 var rightPressed = function(){
+  player.setAttribute('src', 'images/Avatar-Front.png');
   if (real_player.x <= 1300){
     real_player.x += 10;
     player.style.left = real_player.x + 'px';
@@ -99,7 +101,7 @@ var generateCoin = function(){
 
   clicker.setAttribute("type", "button");
   clicker.style[side] = pixels + "px";
-  coin.setAttribute("src", "images/Substitute.png");
+  coin.setAttribute("src", "images/Coin.png");
   coin.setAttribute("width", absolute_width);
   coin.setAttribute("height", absolute_height);
   coin.setAttribute("alt", "Coin");
@@ -125,6 +127,7 @@ var animateCoin = function(id){
   score.innerHTML = current_score.toString();
   var change_attribute = function(){
     if (current_interval > max_intervals){
+      console.log('Clearing.');
       clearInterval(interval)
       current_interval = 0
       document.body.removeChild(button)
@@ -146,8 +149,14 @@ for (var i = 0; i < amount_of_coins; i++){
   var elements = generateCoin();
   var button = elements[0];
   var coin = elements[1];
-  button.setAttribute('id', i)
-  coin.setAttribute('id', i)
+  button.setAttribute('coin', i);
+  button.style.outline = 'none';
+  button.style['background-color'] = 'Transparent';
+  coin.style.outline = 'none';
+  button.setAttribute('id', i);
+  button.style.position = 'relative';
+  button.style['border-width'] = '0px';
+  coin.setAttribute('id', i);
 }
 
 var timer = function(){
